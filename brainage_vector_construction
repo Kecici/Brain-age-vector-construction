@@ -1,0 +1,19 @@
+# Construction of the brain age vector
+
+import pandas as pd
+import shap
+
+''' 
+model is the trained brain age estimator
+features is a list of the input features of the brain age estimator
+X is (a) input feature vector(s) of (a) subject(s) to the brain age estimator
+BA_vector is the output brain age vector(s) for the subject(s)
+'''
+
+def brainage_vector(model, X, features):
+    explainer = shap.TreeExplainer(model)
+    vector = explainer.shap_values(X)
+    BA_vector = pd.DataFrame(vector, columns=features)
+    
+    return BA_vector
+    
