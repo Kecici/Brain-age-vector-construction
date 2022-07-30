@@ -20,7 +20,7 @@ def brainage_vector(model, X, features):
     
 
 
-
+#### Usage
 data = pd.read_csv(r"C:\Users\rc\Desktop\work\data10\sMCI_test_retest.csv")
 features = data.drop(columns=['name','age']).columns
 
