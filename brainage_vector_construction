@@ -2,11 +2,12 @@
 
 import pandas as pd
 import shap
+import joblib
 
 ''' 
 model is the trained brain age estimator
 features is a list of the input features of the brain age estimator
-X is (a) input feature vector(s) of (a) subject(s) to the brain age estimator
+X is (a) input feature vector(s) of (a) subject(s) to the brain age estimator (X shoule be a TWO-dimensional array)
 BA_vector is the output brain age vector(s) for the subject(s)
 '''
 
@@ -17,3 +18,17 @@ def brainage_vector(model, X, features):
     
     return BA_vector
     
+
+
+
+data = pd.read_csv(r"C:\Users\rc\Desktop\work\data10\sMCI_test_retest.csv")
+features = data.drop(columns=['name','age']).columns
+
+X_test = data.drop(columns=['name','age']).head(1).values
+# X_test = data.drop(columns=['name','age'])
+# print(X_test, type(X_test))   ### 2-dimensional array
+
+model = joblib.load(r"C:\Users\rc\Desktop\work\data10\brain_age_estimator.m")
+
+BA_vector = brainage_vector(model, X_test, features)
+print(BA_vector)
