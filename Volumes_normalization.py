@@ -1,5 +1,8 @@
 ### Brain volumes normalization by ICV 
 
+import pandas as pd
+import numpy as np
+
 volume = pd.read_csv(r"D:\rc111\paper\csv\data7\ff_HC.csv")
 icv = pd.read_csv(r"D:\rc111\paper\csv\data7\ICV_summury_HC.csv")
 info = pd.read_csv(r"D:\rc111\paper\csv\data7\HC2022_3DT1bl_4_21_2022.csv")
